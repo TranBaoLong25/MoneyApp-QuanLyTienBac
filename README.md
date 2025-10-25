@@ -1,10 +1,5 @@
-Hoàn toàn được.
-
-Dựa trên cấu trúc dự án SaveMoneyApp_Structure (Kotlin, Compose, Room, MVVM) rất tốt mà bạn đã cung cấp, tôi có thể soạn thảo một tệp README.md chuyên nghiệp cho dự án "Money Make" của bạn.
-
-Dưới đây là nội dung dự thảo, bạn có thể sao chép và dán vào tệp README.md của mình:
-
 Money Make - Ứng dụng Quản lý Chi tiêu Cá nhân
+
 Money Make là một ứng dụng di động Android gốc (Native) được xây dựng để giúp người dùng theo dõi và quản lý tài chính cá nhân một cách hiệu quả. Ứng dụng cho phép người dùng ghi lại các giao dịch thu/chi, đặt mục tiêu tiết kiệm và xem báo cáo trực quan về tình hình tài chính của mình.
 
 Dự án này được phát triển bằng bộ công cụ Android hiện đại (Modern Android Development - MAD).
