@@ -1,73 +1,78 @@
-Money Make - Ứng dụng Quản lý Chi tiêu Cá nhân
+# 💰 Saving Money App: Quản lý Chi tiêu và Tiết kiệm Cá nhân
 
-Money Make là một ứng dụng di động Android gốc (Native) được xây dựng để giúp người dùng theo dõi và quản lý tài chính cá nhân một cách hiệu quả. Ứng dụng cho phép người dùng ghi lại các giao dịch thu/chi, đặt mục tiêu tiết kiệm và xem báo cáo trực quan về tình hình tài chính của mình.
+Ứng dụng di động hiện đại được xây dựng trên nền tảng **Jetpack Compose** giúp người dùng theo dõi thu nhập, chi tiêu, quản lý ngân sách và đạt mục tiêu tiết kiệm một cách trực quan, dễ dàng.
 
-Dự án này được phát triển bằng bộ công cụ Android hiện đại (Modern Android Development - MAD).
 
-Tính năng chính
-Xác thực Người dùng: Đăng nhập và đăng ký an toàn.
+---
 
-Quản lý Giao dịch: Ghi chép, phân loại các khoản thu nhập và chi tiêu.
+## ✨ Tính Năng Chính (Core Features)
 
-Phân loại: Tạo và quản lý các danh mục chi tiêu (ví dụ: Ăn uống, Di chuyển, Giải trí).
+| Icon | Tính năng | Mô tả |
+| :---: | :--- | :--- |
+| 🔑 | **Xác thực Đầy đủ (Full Auth Flow)** | Đăng ký, Đăng nhập và Khôi phục mật khẩu. |
+| 🔄 | **Chế độ Sáng/Tối (Light/Dark Mode)** | Hỗ trợ chuyển đổi giao diện linh hoạt theo cài đặt hệ thống. |
+| 📊 | **Dashboard Tổng quan** | Bảng điều khiển hiển thị số dư, thu chi theo tháng và biểu đồ chi tiêu tổng hợp. |
+| ➕ | **Ghi nhận Giao dịch Nhanh** | Giao diện nhập liệu số tiền và danh mục dễ dàng (Tham khảo iPhone 16 Pro Max - 9). |
+| 📈 | **Báo cáo Chuyên sâu** | Biểu đồ hình tròn (Pie Chart) trực quan hóa tỷ lệ phân bổ tài chính giữa các mục tiêu (Tiết kiệm, Mua sắm, Lương). |
+| 🔎 | **Lịch sử Giao dịch** | Danh sách giao dịch có chức năng tìm kiếm và lọc. |
+| ⚙️ | **Cài đặt Nâng cao** | Quản lý hồ sơ, thông báo và các tùy chọn cá nhân hóa. |
 
-Đặt Mục tiêu: Thiết lập các mục tiêu tiết kiệm (ví dụ: "Mua laptop mới", "Du lịch") và theo dõi tiến độ.
+---
 
-Báo cáo & Thống kê: Xem các biểu đồ trực quan về dòng tiền, chi tiêu theo danh mục.
+## 🎨 Thiết Kế & Trải nghiệm Người dùng (Design & UX)
 
-Lưu trữ Cục bộ: Toàn bộ dữ liệu được lưu trữ an toàn trên thiết bị bằng Room Database.
+Dự án tuân thủ nghiêm ngặt nguyên tắc **Material Design 3 (M3)** để đảm bảo tính hiện đại và khả năng thích ứng:
 
-(Bạn có thể bổ sung thêm các tính năng dự kiến khác)
+* **Hệ thống Màu sắc:** Định nghĩa rõ ràng `ColorScheme` cho Light và Dark Theme, sử dụng màu chủ đạo (`PrimaryGreen`) và màu nhấn (`AccentPink`) nhất quán.
+* **Typography:** Sử dụng `Typography` chuẩn M3 (headline, title, body, label) để đồng bộ hóa kích thước và độ đậm của chữ.
+* **Phản hồi (Feedback):** Sử dụng các hiệu ứng chuyển đổi và phản hồi chạm mượt mà của Compose.
+* **Giao diện trực quan:** Tập trung vào biểu đồ và số liệu lớn để người dùng dễ dàng nắm bắt tình hình tài chính.
 
-Cấu trúc Dự án
-Dự án tuân theo kiến trúc MVVM (Model-View-ViewModel) kết hợp với các nguyên tắc của Clean Architecture, đảm bảo code rõ ràng, dễ bảo trì và mở rộng.
+---
 
-SaveMoneyApp_Structure/
-│
-├── data/                # Lớp Dữ liệu (Model)
-│   ├── dao/             # Data Access Objects (Giao diện truy vấn Room)
-│   │   ├── CategoryDao.kt
-│   │   ├── GoalDao.kt
-│   │   ├── TransactionDao.kt
-│   │   └── UserDao.kt
-│   ├── database/        # Định nghĩa Room Database
-│   │   └── AppDatabase.kt
-│   ├── model/           # Các đối tượng (Entities)
-│   │   ├── Category.kt
-│   │   ├── Goal.kt
-│   │   ├── Transaction.kt
-│   │   └── User.kt
-│   └── repository/      # Lớp Repository (Nguồn dữ liệu)
-│       ├── TransactionRepository.kt
-│       └── UserRepository.kt
-│
-├── navigation/          # Quản lý luồng điều hướng
-│   └── NavGraph.kt
-│
-├── ui/                  # Lớp Giao diện (View)
-│   ├── screens/         # Các màn hình (Composable Screens)
-│   │   ├── HomeScreen.kt
-│   │   ├── LoginScreen.kt
-│   │   ├── ReportScreen.kt
-│   │   └── ...
-│   └── viewmodel/       # Lớp ViewModel
-│       ├── AuthViewModel.kt
-│       └── TransactionViewModel.kt
-│
-└── MainActivity.kt      # Điểm vào chính của ứng dụng
-Công nghệ & Thư viện sử dụng
-Ngôn ngữ: Kotlin
+## 🛠️ Công Nghệ & Kiến Trúc (Tech Stack & Architecture)
 
-Giao diện (UI): Jetpack Compose - Bộ công cụ UI khai báo (declarative) hiện đại.
+| Loại | Công nghệ/Thư viện | Phiên bản (Ví dụ) | Vai trò chi tiết |
+| :--- | :--- | :--- | :--- |
+| **Ngôn ngữ** | **Kotlin** | 1.9.23 | Ngôn ngữ phát triển chính. |
+| **UI Framework** | **Jetpack Compose** (Material 3) | 1.6.7 / BOM 2024.05.00 | Xây dựng giao diện khai báo (Declarative UI). |
+| **Kiến trúc** | **MVVM** | N/A | Phân tách logic nghiệp vụ khỏi giao diện. |
+| **Navigation** | **Navigation Component** | 2.7.7 | Quản lý luồng điều hướng an toàn và hiệu quả. |
+| **DI** | **Hilt** by Dagger | 2.51.1 | Quản lý vòng đời và chèn phụ thuộc của ViewModels, Repositories. |
+| **Dữ liệu** | **Room Database** | 2.6.1 | Lưu trữ dữ liệu giao dịch cục bộ. |
+| **Bất đồng bộ** | **Coroutines & Flow** | 1.8.0 | Xử lý các tác vụ I/O, Database hiệu quả. |
 
-Kiến trúc: MVVM (Model-View-ViewModel).
+---
 
-Lưu trữ Cục bộ: Room - Lớp trừu tượng SQLite mạnh mẽ.
+## ⚙️ Yêu cầu Hệ thống và Cấu hình
 
-Bất đồng bộ: Kotlin Coroutines - Quản lý các tác vụ nền (background tasks).
+| Thuộc tính | Giá trị | Ghi chú |
+| :--- | :--- | :--- |
+| **Target SDK** | 34 (Android 14) | Phiên bản Android mới nhất. |
+| **Min SDK** | 26 (Android 8.0 Oreo) | Đảm bảo tính tương thích với hầu hết các thiết bị hiện tại. |
+| **JVM Target** | 17 | Bắt buộc cho Kotlin và Compose hiện đại. |
+| **Build Tool** | Gradle KTS | Sử dụng Kotlin Script cho cấu hình an toàn hơn. |
 
-Quản lý Trạng thái: StateFlow & ViewModel - Quản lý trạng thái UI một cách hiệu quả và an toàn.
+---
 
-Điều hướng: Navigation Compose - Xử lý luồng di chuyển giữa các màn hình.
+## 🚀 Hướng Dẫn Cài Đặt (Getting Started)
 
-(Khuyến nghị) Dependency Injection: Hilt - Để quản lý việc khởi tạo và cung cấp các phụ thuộc.
+1.  **Clone Repository:**
+    ```bash
+    git clone [https://github.com/your-username/saving-money-app.git](https://github.com/your-username/saving-money-app.git)
+    ```
+2.  **Mở Dự án:** Mở thư mục dự án trong Android Studio.
+3.  **Biên dịch:** Đợi Gradle đồng bộ và đảm bảo `ksp` (Kotlin Symbol Processing) chạy thành công để tạo các lớp Hilt cần thiết.
+4.  **Chạy:** Chạy ứng dụng trên thiết bị vật lý hoặc AVD.
+
+---
+
+## 🤝 Đóng Góp (Contribution)
+
+Mọi ý kiến đóng góp, báo cáo lỗi (Issue) hoặc đề xuất tính năng (Pull Request) đều được hoan nghênh.
+
+---
+
+Bây giờ bạn đã có thể đăng file `README.md` lên GitHub mà không lo bị dính chữ.
+
+Công việc tiếp theo của chúng ta là xây dựng màn hình **Đăng ký (`RegisterScreen.kt`)**. Bạn có muốn tôi tạo code cho màn hình này không?
